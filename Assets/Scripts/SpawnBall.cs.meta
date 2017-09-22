@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f3aa2f3162f9b1244834e97123ff9866
+timeCreated: 1504058818
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - ballPrefab: {fileID: 1000013407844124, guid: 318be130c3af46241bc2c1d43a0af5bb,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
