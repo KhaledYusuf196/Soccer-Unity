@@ -6,6 +6,7 @@ public class NetworkManagerCamera : NetworkManager {
     public Transform sceneCamera;
     public GameObject ball;
     public float cameraRotationRadius = 24f;
+    public float cameraHeight = 10f;
     public float cameraRotationSpeed = 3f;
     public bool canRotate = true;
 
@@ -38,7 +39,7 @@ public class NetworkManagerCamera : NetworkManager {
         rotation += cameraRotationSpeed * Time.deltaTime;
         sceneCamera.position = Vector3.zero;
         sceneCamera.rotation = Quaternion.Euler(0f, rotation, 0f);
-        sceneCamera.Translate(0f, cameraRotationRadius, -cameraRotationRadius);
+        sceneCamera.Translate(0f, cameraHeight, -cameraRotationRadius);
         sceneCamera.LookAt(Vector3.zero);
     }
 

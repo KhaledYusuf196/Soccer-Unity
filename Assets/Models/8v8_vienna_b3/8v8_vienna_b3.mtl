@@ -1,0 +1,232 @@
+newmtl material_0
+Kd 1.0000 1.0000 1.0000
+illum 0
+
+# PITCH/GRASS_STRIPE
+newmtl material_1
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_1.tga
+
+# NOT_YET/METAL_POLE
+newmtl material_2
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_2.tga
+
+# NOT_YET/RAILINGS
+newmtl material_3
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_3.tga
+
+# NOT_YET/EXIT_WALL
+newmtl material_4
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_4.tga
+
+# NOT_YET/TRIM
+newmtl material_5
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_5.tga
+
+# NOT_YET/WALL_ROOM
+newmtl material_6
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_6.tga
+
+# NOT_YET/GREYSEAT
+newmtl material_7
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_7.tga
+
+# NOT_YET/TUNNELTEXTURE
+newmtl material_8
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_8.tga
+
+# NOT_YET/METAL_ROOF
+newmtl material_9
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_9.tga
+
+# NOT_YET/BLUESEAT
+newmtl material_10
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_10.tga
+
+# NOT_YET/WALL_ROOM_NEW
+newmtl material_11
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_11.tga
+
+# NOT_YET/CONCRETESTAND
+newmtl material_12
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_12.tga
+
+# NOT_YET/METAL_POLE02
+newmtl material_13
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_13.tga
+
+# NOT_YET/TREECARD
+newmtl material_14
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_14.tga
+
+# NOT_YET/METALWALL2
+newmtl material_15
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_15.tga
+
+# NOT_YET/WALL_WINDOW2
+newmtl material_16
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_16.tga
+
+# NOT_YET/WALL_DOOR
+newmtl material_17
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_17.tga
+
+# NOT_YET/ANIMATEDADBOARD_LARGE
+newmtl material_18
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_18.tga
+
+# NOT_YET/TUNNELDOOR
+newmtl material_19
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_19.tga
+
+# NOT_YET/HANDRAIL
+newmtl material_20
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_20.tga
+
+# PITCH/PITCH
+newmtl material_21
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_21.tga
+
+# NOT_YET/BUNTING
+newmtl material_22
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_22.tga
+
+# NOT_YET/WELCOME
+newmtl material_23
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_23.tga
+
+# NOT_YET/METALWALL
+newmtl material_24
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_24.tga
+
+# NOT_YET/WINDOW_STAND
+newmtl material_25
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_25.tga
+
+# NOT_YET/BANNER
+newmtl material_26
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_26.tga
+
+# NOT_YET/BANNER5
+newmtl material_27
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_27.tga
+
+# NOT_YET/BANNER2
+newmtl material_28
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_28.tga
+
+# NOT_YET/BANNER3
+newmtl material_29
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_29.tga
+
+# NOT_YET/BANNER4
+newmtl material_30
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_30.tga
+
+# models\not_yet\goals\goal_posts
+newmtl material_31
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_31.tga
+
+# models\not_yet\goals\goal_net
+newmtl material_32
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_32.tga
+
+# models\not_yet\bench\bench_new
+newmtl material_33
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_33.tga
+
+# models\not_yet\bench\bench_glass
+newmtl material_34
+Kd 1.0000 1.0000 1.0000
+d 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_34.tga
+
+# models\not_yet\spotlight\spotlight
+newmtl material_35
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_35.tga
+
+# models\not_yet\scoreboard\scoreboard
+newmtl material_36
+Kd 1.0000 1.0000 1.0000
+illum 0
+map_Kd 8v8_vienna_b3_material_36.tga
+

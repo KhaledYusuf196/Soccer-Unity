@@ -9,29 +9,29 @@ public class ClothSimulation : MonoBehaviour {
     public float force;
     public float constraint;
     Vector3 dist;
-    GameObject[] go;
+    //GameObject[] go;
     //LineRenderer[] lr;
     // Use this for initialization
     void Start () {
         if (ls != null)
         {
-            go = new GameObject[3];
+            //go = new GameObject[3];
             //lr = new LineRenderer[3];
             if(ls != null)
             {
-                go[0] = new GameObject();
+                //go[0] = new GameObject();
                 /*lr[0] = go[0].AddComponent<LineRenderer>();
                 lr[0].SetWidth(0.1f, 0.1f);*/
             }
             if(us != null)
             {
-                go[1] = new GameObject();
+                //go[1] = new GameObject();
                 /*lr[1] = go[1].AddComponent<LineRenderer>();
                 lr[1].SetWidth(0.1f, 0.1f);*/
             }
             if(rs != null)
             {
-                go[2] = new GameObject();
+                //go[2] = new GameObject();
                 /*lr[2] = go[2].AddComponent<LineRenderer>();
                 lr[2].SetWidth(0.1f, 0.1f);*/
             }

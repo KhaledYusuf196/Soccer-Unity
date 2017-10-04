@@ -14,6 +14,6 @@ public class StaminaGauge : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        text.GetComponent<Text>().text = "Stamina : " + GetComponent<PlayerController>().getStam() + "\nPower : " + GetComponent<BallController>().getPower();
+        text.GetComponent<Text>().text = "Stamina : " + GetComponent<PlayerController>().getStam() + "\nPower : " + GetComponent<PlayerBallController>().getPower();
     }
 }
