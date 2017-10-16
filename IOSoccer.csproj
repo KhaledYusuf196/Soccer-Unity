@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BallController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\ClothCollision.cs" />
     <Compile Include="Assets\Scripts\ClothCollisionFormation.cs" />
     <Compile Include="Assets\Scripts\ClothSimulation.cs" />
     <Compile Include="Assets\Scripts\Hit.cs" />

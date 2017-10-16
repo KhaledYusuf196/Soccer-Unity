@@ -28,6 +28,7 @@ public class PlayerController : NetworkBehaviour {
         if(body.velocity.magnitude > 2.0f)
         {
             playerAnimator.SetBool("isRunning", true);
+            playerAnimator.SetFloat("runningSpeed", Vector3.Dot(transform.forward, body.velocity.normalized));
         }
         else
         {
