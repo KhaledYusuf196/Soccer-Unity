@@ -83,8 +83,11 @@
     <Compile Include="Assets\Scripts\ClothCollision.cs" />
     <Compile Include="Assets\Scripts\ClothCollisionFormation.cs" />
     <Compile Include="Assets\Scripts\ClothSimulation.cs" />
+    <Compile Include="Assets\Scripts\ClothVertex.cs" />
     <Compile Include="Assets\Scripts\Hit.cs" />
+    <Compile Include="Assets\Scripts\InteractiveCloth.cs" />
     <Compile Include="Assets\Scripts\Level.cs" />
+    <Compile Include="Assets\Scripts\NeighborVertex.cs" />
     <Compile Include="Assets\Scripts\NetworkManagerCamera.cs" />
     <Compile Include="Assets\Scripts\PlayerBallController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
