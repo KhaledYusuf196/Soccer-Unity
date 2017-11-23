@@ -3,7 +3,6 @@ using System.Collections;
 
 [RequireComponent(typeof(MeshFilter))]//Mesh have to be added to mesh filter
 [RequireComponent(typeof(MeshRenderer))]
-[RequireComponent(typeof(MeshCollider))]
 public class InteractiveCloth : MonoBehaviour {
     private Mesh originalMesh;
     private Vector3[] clothVertices;
@@ -13,6 +12,8 @@ public class InteractiveCloth : MonoBehaviour {
     public float downForce = 1.0f;
     public float drag = 1.0f;
     public float mass = 1.0f;
+    public Vector3 windForce = Vector3.zero;
+    private SphereCollider[] spheres;
 	// Use this for initialization
 	void Start () {
         constrainedVertices = new ArrayList();
@@ -23,7 +24,7 @@ public class InteractiveCloth : MonoBehaviour {
         {
             if (!checkconstraints(clothVertices[i]))
                 constrainedVertices.Add(i);
-            cloth[i] = new ClothVertex(i, transform.localToWorldMatrix.MultiplyPoint(clothVertices[i]), clothVertexForce, downForce, drag, mass);
+            cloth[i] = new ClothVertex(i, transform.localToWorldMatrix.MultiplyPoint(clothVertices[i]));
         }
         for (int i = 0; i < cloth.Length; i++)
         {
@@ -38,10 +39,15 @@ public class InteractiveCloth : MonoBehaviour {
             if(constrainedVertices.Contains(i))
                 cloth[i].vertex = transform.localToWorldMatrix.MultiplyPoint(clothVertices[i]);
         }
-        GetComponent<MeshFilter>().mesh = GetComponent<MeshCollider>().sharedMesh = generateMesh(simulateCloth(), originalMesh);
+        GetComponent<MeshFilter>().mesh /*= GetComponent<MeshCollider>().sharedMesh*/ = generateMesh(simulateCloth(), originalMesh);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void LateUpdate()
+    {
+        spheres = FindObjectsOfType<SphereCollider>();
+    }
+
+    /*private void OnCollisionEnter(Collision collision)
     {
             int nearestVertexIndex = 0;
             for(int i = 1; i < clothVertices.Length; i++)
@@ -55,7 +61,7 @@ public class InteractiveCloth : MonoBehaviour {
             {
                 cloth[nearestVertexIndex].velocity = -collision.rigidbody.velocity;
             }
-    }
+    }*/
 
     private Vector3[] simulateCloth()
     {
@@ -89,7 +95,7 @@ public class InteractiveCloth : MonoBehaviour {
             
             if (!constrainedVertices.Contains(i))
             {
-                cloth[i].simulateClothVertex();
+                cloth[i].simulateClothVertex(clothVertexForce, drag, mass, downForce, windForce, spheres);
             }
         }
         for (int i = 0; i < cloth.Length; i++)
