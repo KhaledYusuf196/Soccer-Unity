@@ -7,6 +7,7 @@ public class ClothVertex {
     public Vector3 velocity;
     private Vector3 acceleration;
     private ArrayList neighbors;
+    public float radius;
 
     public ClothVertex(int index, Vector3 vertex)
     {
@@ -14,6 +15,7 @@ public class ClothVertex {
         this.vertex = vertex;
         acceleration = Vector3.zero;
         neighbors = new ArrayList();
+        radius = 0;
     }
 
     public void addNeighbors(ClothVertex[] vertices, int[] triangles)
@@ -37,14 +39,19 @@ public class ClothVertex {
                 neighbors.Add(new NeighborVertex(vertices[triangles[i]], (vertices[triangles[i]].vertex - vertex).magnitude));
             }
         }
+        for(int i = 0; i < neighbors.Count; i++)
+        {
+            radius += ((NeighborVertex)neighbors[i]).distance;
+        }
+        radius /= neighbors.Count;
     }
-    public void simulateClothVertex(float force, float drag, float mass, float downForce, Vector3 windForce, SphereCollider[] spheres)
+    public void simulateClothVertex(float force, float drag, float mass, float downForce, Vector3 windForce, float distanceFactor, SphereCollider[] spheres)
     {
         acceleration = (mass * (downForce * Vector3.down)) + (-drag * velocity * velocity.magnitude) + windForce;
         for (int i = 0; i < neighbors.Count; i++)
         {
             NeighborVertex tmp = (NeighborVertex)neighbors[i];
-            float magnitude = ((tmp.neighbor.vertex - vertex).magnitude - tmp.distance) * force;
+            float magnitude = ((tmp.neighbor.vertex - vertex).magnitude - tmp.distance*distanceFactor) * force;
             Vector3 direction = (tmp.neighbor.vertex - vertex).normalized;
             Vector3 distanceVector = direction * magnitude;
             acceleration += distanceVector;
@@ -55,16 +62,17 @@ public class ClothVertex {
         {
             for (int i = 0; i < spheres.Length ; i++)
             {
-                Vector3 distance = vertex - spheres[i].transform.position;
+                Vector3 position = (spheres[i].transform.position + spheres[i].center* spheres[i].transform.localScale.y);
+                Vector3 distance = vertex - position;
                 float radius = spheres[i].radius * Mathf.Max(spheres[i].transform.localScale.x, spheres[i].transform.localScale.y, spheres[i].transform.localScale.z);
-                if (radius > distance.magnitude)
+                if (distance.magnitude < radius + this.radius)
                 {
                     distance = distance.normalized;
-                    vertex = spheres[i].transform.position + distance * radius;
+                    vertex = position + distance * (radius + this.radius);
                     Rigidbody ball = spheres[i].GetComponent<Rigidbody>();
                     if(ball == null)
                     {
-                        velocity = Vector3.zero;
+                        velocity += distance*velocity.magnitude;
                     }
                     else
                     {
@@ -73,14 +81,11 @@ public class ClothVertex {
                         Vector3 totalVelocity = (ballVelocityMagnitude * ball.mass + velocityMagnitude * mass) * distance;
                         ball.velocity -= ballVelocityMagnitude * distance;
                         velocity -= velocityMagnitude * distance;
-                        ball.velocity += totalVelocity / 1.2f;
-                        velocity += totalVelocity / 1.2f;
+                        ball.velocity += 1.0f/(mass + ball.mass) * totalVelocity;
+                        velocity += 1.0f/(mass + ball.mass) * totalVelocity;
                     }
                 }
             }
         }
-            
-        if (velocity.magnitude > 200.0f)
-                velocity = (velocity.normalized) * 200.0f;
     }
 }

@@ -12,6 +12,7 @@ public class InteractiveCloth : MonoBehaviour {
     public float downForce = 1.0f;
     public float drag = 1.0f;
     public float mass = 1.0f;
+    public float distanceFactor = 1.0f;
     public Vector3 windForce = Vector3.zero;
     private SphereCollider[] spheres;
 	// Use this for initialization
@@ -29,17 +30,15 @@ public class InteractiveCloth : MonoBehaviour {
         for (int i = 0; i < cloth.Length; i++)
         {
             cloth[i].addNeighbors(cloth, originalMesh.triangles);
+            cloth[i].radius /= 1.5f;
+            print(cloth[i].radius);
         }
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        for (int i = 0; i < clothVertices.Length; i++)
-        {
-            if(constrainedVertices.Contains(i))
-                cloth[i].vertex = transform.localToWorldMatrix.MultiplyPoint(clothVertices[i]);
-        }
-        GetComponent<MeshFilter>().mesh /*= GetComponent<MeshCollider>().sharedMesh*/ = generateMesh(simulateCloth(), originalMesh);
+
+    private void FixedUpdate()
+    {
+        originalMesh.vertices = simulateCloth();
+        originalMesh.RecalculateNormals();
     }
 
     private void LateUpdate()
@@ -68,24 +67,16 @@ public class InteractiveCloth : MonoBehaviour {
         filterVertices();
         for (int i = 0; i < clothVertices.Length; i++)
         {
-            if(!constrainedVertices.Contains(i))
+            if (constrainedVertices.Contains(i))
+            {
+                cloth[i].vertex = transform.localToWorldMatrix.MultiplyPoint(clothVertices[i]);
+            }
+            else
+            {
                 clothVertices[i] = transform.worldToLocalMatrix.MultiplyPoint(cloth[i].vertex);
+            }
         }
         return clothVertices;
-    }
-
-    private Mesh generateMesh(Vector3[] vertices, Mesh originalMesh)
-    {
-        Mesh mesh = new Mesh();
-        mesh.vertices = vertices;
-        mesh.triangles = originalMesh.triangles;
-        mesh.uv = originalMesh.uv;
-        mesh.uv2 = originalMesh.uv2;
-        mesh.uv3 = originalMesh.uv3;
-        mesh.uv4 = originalMesh.uv4;
-        mesh.RecalculateBounds();
-        mesh.RecalculateNormals();
-        return mesh;
     }
 
     private void filterVertices()
@@ -95,7 +86,7 @@ public class InteractiveCloth : MonoBehaviour {
             
             if (!constrainedVertices.Contains(i))
             {
-                cloth[i].simulateClothVertex(clothVertexForce, drag, mass, downForce, windForce, spheres);
+                cloth[i].simulateClothVertex(clothVertexForce, drag, mass, downForce, windForce, distanceFactor, spheres);
             }
         }
         for (int i = 0; i < cloth.Length; i++)

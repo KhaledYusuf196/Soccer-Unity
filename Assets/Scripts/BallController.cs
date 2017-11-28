@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class BallController : MonoBehaviour {
+public class BallController : NetworkBehaviour {
     private Rigidbody ball;
     public float magnusFactor = 100f;
 	// Use this for initialization
 	void Start () {
+        if (!isServer)
+            Destroy(this);
         ball = GetComponent<Rigidbody>();
     }
 	

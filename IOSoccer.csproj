@@ -94,6 +94,9 @@
     <Compile Include="Assets\Scripts\SpawnBall.cs" />
     <Compile Include="Assets\Scripts\StaminaGauge.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\DoubleFaced.shader" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>
