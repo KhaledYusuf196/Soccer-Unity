@@ -8,7 +8,7 @@ public class Hit : MonoBehaviour {
     public void hit()
     {
         transform.position = stpos;
-        GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-6,6), Random.Range(0, 5.0f), Random.Range(30, 40.0f));
+        GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-30,30), Random.Range(0, 30.0f), Random.Range(30, 80.0f));
 
     }
 

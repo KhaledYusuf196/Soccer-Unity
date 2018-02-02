@@ -45,7 +45,7 @@ public class ClothVertex {
         }
         radius /= neighbors.Count;
     }
-    public void simulateClothVertex(float force, float drag, float mass, float downForce, Vector3 windForce, float distanceFactor, SphereCollider[] spheres)
+    public void simulateClothVertex(float force, float drag, float mass, float downForce, Vector3 windForce, float distanceFactor, float maxTensionForce, SphereCollider[] spheres)
     {
         acceleration = (mass * (downForce * Vector3.down)) + (-drag * velocity * velocity.magnitude) + windForce;
         for (int i = 0; i < neighbors.Count; i++)
@@ -55,6 +55,10 @@ public class ClothVertex {
             Vector3 direction = (tmp.neighbor.vertex - vertex).normalized;
             Vector3 distanceVector = direction * magnitude;
             acceleration += distanceVector;
+        }
+        if(acceleration.sqrMagnitude > maxTensionForce * maxTensionForce)
+        {
+            acceleration = acceleration.normalized * maxTensionForce;
         }
         acceleration /= mass;
         velocity += acceleration * Time.deltaTime;
@@ -79,10 +83,12 @@ public class ClothVertex {
                         float ballVelocityMagnitude = Vector3.Dot(distance, ball.velocity);
                         float velocityMagnitude = Vector3.Dot(distance, velocity);
                         Vector3 totalVelocity = (ballVelocityMagnitude * ball.mass + velocityMagnitude * mass) * distance;
+                        Vector3 ballOldVelocity = ball.velocity;
                         ball.velocity -= ballVelocityMagnitude * distance;
                         velocity -= velocityMagnitude * distance;
                         ball.velocity += 1.0f/(mass + ball.mass) * totalVelocity;
                         velocity += 1.0f/(mass + ball.mass) * totalVelocity;
+                        ball.angularVelocity = 1.0f / (mass + ball.mass) * Vector3.Cross(ball.velocity, ballOldVelocity);
                     }
                 }
             }

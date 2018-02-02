@@ -14,6 +14,7 @@ public class InteractiveCloth : MonoBehaviour {
     public float mass = 1.0f;
     public float distanceFactor = 1.0f;
     public Vector3 windForce = Vector3.zero;
+    public float maxTensionForce = 200.0f;
     private SphereCollider[] spheres;
 	// Use this for initialization
 	void Start () {
@@ -86,7 +87,7 @@ public class InteractiveCloth : MonoBehaviour {
             
             if (!constrainedVertices.Contains(i))
             {
-                cloth[i].simulateClothVertex(clothVertexForce, drag, mass, downForce, windForce, distanceFactor, spheres);
+                cloth[i].simulateClothVertex(clothVertexForce, drag, mass, downForce, windForce, distanceFactor, maxTensionForce, spheres);
             }
         }
         for (int i = 0; i < cloth.Length; i++)

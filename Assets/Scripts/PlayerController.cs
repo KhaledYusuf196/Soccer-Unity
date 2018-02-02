@@ -24,16 +24,30 @@ public class PlayerController : NetworkBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate() {
-        if(body.velocity.magnitude > 2.0f)
+	void Update() {
+        float sideSpeed = Vector3.Dot(-transform.right, body.velocity / Max_Speed);
+        float forwardSpeed = Vector3.Dot(transform.forward, body.velocity / Max_Speed);
+        if (sideSpeed < 0)
         {
-            playerAnimator.SetBool("isRunning", true);
-            playerAnimator.SetFloat("runningSpeed", Vector3.Dot(transform.forward, body.velocity.normalized));
+            playerAnimator.SetFloat("side", -1);
+            sideSpeed *= -1;
         }
         else
         {
-            playerAnimator.SetBool("isRunning", false);
+            playerAnimator.SetFloat("side", 1);
         }
+        if (forwardSpeed < 0)
+        {
+            playerAnimator.SetFloat("forward", -1);
+            forwardSpeed *= -1;
+        }
+        else
+        {
+            playerAnimator.SetFloat("forward", 1);
+        }
+        playerAnimator.SetLayerWeight(1, forwardSpeed);
+        playerAnimator.SetLayerWeight(2, sideSpeed);
+
         transform.forward = Vector3.Cross(Camera.main.transform.right, transform.up).normalized;
         Vector3 direction = Input.GetAxisRaw("Horizontal") * transform.right + Input.GetAxisRaw("Vertical") * transform.forward;
         if(Input.GetButtonDown("Sprint"))

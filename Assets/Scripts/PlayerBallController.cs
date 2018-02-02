@@ -11,6 +11,7 @@ public class PlayerBallController : NetworkBehaviour {
     private bool isCharging;
     private int chargeIncrement;
     private float power;
+    public float angularVelocityFactor = 1.0f;
 
     private void Start()
     {
@@ -66,7 +67,7 @@ public class PlayerBallController : NetworkBehaviour {
         GameObject ball = collision.gameObject;
         if (ball.tag == "Ball" && isShooting)
         {
-            CmdShot(ball, power, Camera.main.transform.forward, GetComponent<Rigidbody>().velocity);
+            CmdShot(ball, power, Camera.main.transform.forward, GetComponent<Rigidbody>().velocity, angularVelocityFactor);
             if (chargedShot)
             {
                 isShooting = false;
@@ -80,9 +81,9 @@ public class PlayerBallController : NetworkBehaviour {
     }
 
     [Command]
-    private void CmdShot(GameObject ball, float pow, Vector3 dir, Vector3 playerDir)
+    private void CmdShot(GameObject ball, float pow, Vector3 dir, Vector3 playerDir, float angularVelocityFactor)
     {
         ball.GetComponent<Rigidbody>().velocity = pow * (dir + 0.5f * Vector3.up).normalized;
-        ball.GetComponent<Rigidbody>().angularVelocity = Vector3.Cross(playerDir, dir);
+        ball.GetComponent<Rigidbody>().angularVelocity = Vector3.Cross(playerDir, dir) * angularVelocityFactor;
     }
 }
